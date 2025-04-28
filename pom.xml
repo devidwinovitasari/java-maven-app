@@ -1,17 +1,36 @@
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-shade-plugin</artifactId>
-      <version>3.2.4</version>
-      <executions>
-        <execution>
-          <phase>package</phase>
-          <goals>
-            <goal>shade</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-  </plugins>
-</build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>        <!-- Ganti sesuai nama project kamu -->
+    <artifactId>java-maven-app</artifactId> <!-- Ganti sesuai nama project kamu -->
+    <version>1.0-SNAPSHOT</version>         <!-- Bisa pakai versi kamu sendiri -->
+
+    <build>
+        <plugins>
+            <!-- Plugin untuk membuat fat JAR (berisi semua dependency) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <!-- Kalau ada dependency lain, tambahkan di sini -->
+    </dependencies>
+</project>
